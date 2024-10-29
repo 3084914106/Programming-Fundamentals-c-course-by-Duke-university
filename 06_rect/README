@@ -1,65 +1,57 @@
-For this problem, we will be writing a function which takes
-two rectangles, determines the region in which they overlap
-(which is also a rectangle), and returns that region.
+问题描述：
 
-Before proceeding, think about what the corner case(s) [no pun intended!]
-in this problem might be.
+我们将编写一个函数，该函数接受两个矩形，确定它们的重叠区域（也是一个矩形），并返回该重叠区域。
 
- 1. Open the provided file called "rectangle.c"
+在继续之前，请考虑一下这个问题可能的特殊情况（角落情况）。
 
- 2. In the "rectangle.c" file, define a struct for rectangles
-    which has 4 fields: x, y, width, and height.  Each of these
-    fields should be an int.  Use typedef so that the typename
-    "rectangle" refers to your struct.
+1. 打开提供的文件“rectangle.c”
 
- 3. One corner we might have to deal with is if the rectangle's
-    representation is non-standard: if the width or height are 
-    negative.  One way to deal with inputs that come in non-standard
-    formats is to "canonicalize" them---convert them to the standard
-    (or "canonical") representation.   First, write the function
 
-      rectangle canonicalize(rectangle r);
+2. 在文件“rectangle.c”中，定义一个矩形的结构体，该结构体包含四个字段：x、y、width 和 height。 这些字段的类型应为 int。使用 typedef 使得 “rectangle” 可以直接作为该结构体的类型名称。
 
-     which takes a rectangle, and "fixes" its representation 
-     by ensuring that the width and height are non-negative (and
-     appropriately adjusting the x and/or y co-ordinate).  That is,  
-     if your canonicalize function were passed a rectangle with
-        x=3, y=2, width=-2, height=4
-     then it should return a rectangle with
-        x=1, y=2, width=2, height=4
-     as these both describe the same rectangle, but the later is
-     in a canonical representation.
- 
-     It may be a good idea to stop and test this function
-     before proceeding.  Compile and run your code.
-     The main function we have provided should be useful,
-     as it canonicalizes the rectangles it prints.
 
-  4. Now, write the function
-      rectangle intersection(rectangle r1, rectangle r2)
-     which takes two rectangles (r1, and r2), and returns
-     the rectangle representing the intersection of the two.
-     
-     Note that there is a corner case where the correct answer
-     is "no intersection".  We have not learned how to represent
-     "no such thing" yet, but we will consider a rectangle with
-     both width and height equal to 0 to mean "no such rectangle".
-     
-     We will consider a rectangle to have one (but not the other)
-     of width or height equal to 0 to be an appropriate answer
-     when rectangles share an edge but do not overlap.  For example,
-      x=0,y=0,width=1, height=1
-     and
-      x=-1,y=1,width=3,height=2
-     Should result in the "rectangle"
-      x=0,y=1,width=1,height=0
-   5. We have provided a main function which tests your code,
-      as well as correct output (rectangle_ans.txt) to diff against.
+3. 需要处理的一个特殊情况是矩形的表示形式可能不标准：即宽度或高度为负数。处理非标准格式的输入的一个方法是将它们“规范化”——即转换为标准（或“规范”）的表示形式。首先，编写以下函数：
 
-   6. Submit your code
+rectangle canonicalize(rectangle r);
 
-Hint:
-     Do Step 1 (work an example yourself) four or five times.
-     Draw a variety of different ways that rectangles can overlap.
-     Use these to help  you think abou the general algorithm for how
-     to determine their overlapping region.
+该函数接受一个矩形，并通过确保宽度和高度为非负数来“修正”其表示形式（必要时相应调整 x 和/或 y 坐标）。例如，如果你的 canonicalize 函数接收到的矩形具有：
+
+x=3, y=2, width=-2, height=4
+
+那么它应返回一个具有以下属性的矩形：
+
+x=1, y=2, width=2, height=4
+
+因为这两个矩形描述的是相同的区域，但后者是标准表示形式。
+
+你可以在此时停止并测试该函数，编译并运行代码。我们提供的 main 函数可以用于测试，因为它会自动对打印的矩形进行规范化。
+
+
+4. 接下来，编写以下函数：
+
+rectangle intersection(rectangle r1, rectangle r2);
+
+该函数接受两个矩形（r1 和 r2），并返回表示两者相交区域的矩形。
+
+注意一种特殊情况，即正确的答案是“没有相交”。我们还没有学过如何表示“没有这种东西”，因此我们将宽度和高度都等于 0 的矩形视为“没有这样的矩形”。
+
+当矩形共享一条边但不重叠时，我们认为将宽度或高度其中之一设为 0 是合适的答案。例如，以下两个矩形：
+
+x=0, y=0, width=1, height=1
+和
+x=-1, y=1, width=3, height=2
+
+的相交区域应为“矩形”：
+
+x=0, y=1, width=1, height=0
+
+
+5. 我们提供了一个 main 函数来测试你的代码，同时提供了正确的输出文件（rectangle_ans.txt），可以进行差异比较。
+
+
+6. 提交你的代码
+
+
+
+提示： 完成步骤 1（自己动手计算一个示例）四到五次。绘制几种不同的矩形重叠方式，帮助你思考确定其重叠区域的一般算法。
+
